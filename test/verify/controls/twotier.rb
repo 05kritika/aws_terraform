@@ -36,4 +36,4 @@ describe aws_ec2_instance(INTANCE_ID) do
   its('instance_type') { should eq 't2.micro' }
   its('image_id') { should eq AMI_ID }
 end
-~
+
