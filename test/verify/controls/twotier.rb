@@ -32,8 +32,9 @@ describe aws_security_group(group_name: 'terraform_example_elb') do
 end
 
 describe aws_ec2_instance(INTANCE_ID) do
-  it { should be_running }
+  it { should exist }
   its('instance_type') { should eq 't2.micro' }
   its('image_id') { should eq AMI_ID }
+  its('state') {should be_in ['pending', 'running', 'shutting-down', 'terminated', 'stopping', 'stopped']}
+  it { should_not have_roles }
 end
-
