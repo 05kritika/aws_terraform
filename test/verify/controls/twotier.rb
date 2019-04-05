@@ -41,7 +41,7 @@ describe aws_ec2_instance(INTANCE_ID) do
 end
 
 
-describe aws_elb(load_balancer_name: 'web') do
+describe aws_elb(ELB_DNS) do
     it { should exist }
-    its ('load_balancer_name')  { should eq ELB_DNS }
+    its ('dns_name')  { should eq ELB_DNS }
 end
