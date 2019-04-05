@@ -44,5 +44,4 @@ end
 describe aws_elb(load_balancer_name: 'web') do
     it { should exist }
     its ('load_balancer_name')  { should eq ELB_DNS }
-  end
 end
