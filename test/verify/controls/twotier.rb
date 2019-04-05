@@ -1,5 +1,5 @@
 # encoding: utf-8
-# copyright: 2017, Christoph Hartmann
+
 
 title 'two tier setups'
 
