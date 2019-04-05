@@ -8,6 +8,7 @@ content = inspec.profile.file("terraform.json")
 params = JSON.parse(content)
 
 INTANCE_ID = params['instance_id']['value']
+ELB_DNS = params['elb_address']['value']
 VPC_ID = params['vpc_id']['value']
 AMI_ID = params['ami_id']['value']
 EC2_SECURITY_GROUP = params['ec2_security_group']['value']
@@ -37,4 +38,11 @@ describe aws_ec2_instance(INTANCE_ID) do
   its('image_id') { should eq AMI_ID }
   its('state') {should be_in ['pending', 'running', 'shutting-down', 'terminated', 'stopping', 'stopped']}
   it { should_not have_roles }
+end
+
+
+describe aws_elb(load_balancer_name: 'web') do
+    it { should exist }
+    its ('load_balancer_name')  { should eq ELB_DNS }
+  end
 end
